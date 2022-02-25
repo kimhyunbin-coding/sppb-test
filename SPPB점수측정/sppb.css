@@ -1,0 +1,33 @@
+
+.측정항목 {
+	display: block;
+	margin: 50px auto;
+  text-align: center;	
+}
+
+.측정항목2 {
+	border: 1px solid;
+}
+
+.결과버튼 {
+	
+/*	display: block;*/
+	margin: 100px auto;
+}
+
+.총점수 {
+	margin: auto;
+	padding: 30px;
+	width: 50%;
+	border: 2px solid
+}
+
+.점수공개 {
+	text-align: center;
+	font-size: 40px
+}
+
+.총점수버튼 {
+	margin-top: 110px;
+	margin-bottom: 20px;
+}
