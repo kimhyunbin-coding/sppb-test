@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="SPPB.css" rel="stylesheet">
+	<title>SPPB점수측정기</title>
+</head>
+
+<body>
+	<h1 style="text-align: center; padding: 50px">SPPB점수측정기</h1>
+
+	<div class="container 측정항목">
+		<div class="row">
+			<div class="col">
+				<p>GAIT</p>
+				<input type="text" placeholder="기록을 입력하세요!" class="보행기록">
+				<p class="보행점수표시"></p>
+			</div>
+			<div class="col">
+				<p>CST</p>
+				<input type="text" placeholder="기록을 입력하세요!" class="의자기록">
+				<p class="의자점수표시"></p>
+			</div>
+			<div class="col">
+				<p>BAL</p>
+				<input type="text" placeholder="일반자세 기록" class="균형기록1">
+				<p class="균형점수표시1"></p>
+				<input type="text" placeholder="반일렬자세 기록" class="균형기록2">
+				<p class="균형점수표시2"></p>
+				<input type="text" placeholder="일렬자세 기록" class="균형기록3">
+				<p class="균형점수표시3"></p>
+			</div>
+
+		</div>
+		<div class="container 측정항목">
+			<div class="row">
+				<div class="col">
+					<button type="button" class="btn btn-primary 보행버튼">보행결과</button>
+
+				</div>
+				<div class="col">
+					<button type="button" class="btn btn-primary 의자버튼">의자결과</button>
+				</div>
+				<div class="col">
+					<button type="button" class="btn btn-primary 균형버튼">균형결과</button>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<button type="button" class="btn btn-primary 총점수버튼">총점수결과</button>
+		</div>
+		<div class="총점수">
+			<p class="점수공개"></p>
+		</div>
+	</div>
+
+
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+	<script>
+		// 보행결과버튼 누르면 점수가 나오는 코드
+		$('.보행버튼').click(function() {
+			let gait = $('.보행기록').val()
+
+			if (gait == '' || isNaN(gait)) {
+				alert('정확히 입력해주세요!')
+			} else if (gait < 4.82) {
+				$('.보행점수표시').html('')
+				$('.보행점수표시').html('4점')
+			} else if (4.82 <= gait && gait <= 6.20) {
+				$('.보행점수표시').html('')
+				$('.보행점수표시').html('3점')
+			} else if (6.21 <= gait && gait <= 8.70) {
+				$('.보행점수표시').html('')
+				$('.보행점수표시').html('2점')
+			} else if (gait > 8.70) {
+				$('.보행점수표시').html('')
+				$('.보행점수표시').html('1점')
+			}
+		});
+
+		// 의자결과버튼 누르면 점수가 나오는 코드
+		$('.의자버튼').click(function() {
+			let cst = $('.의자기록').val()
+
+			if (cst == '' || isNaN(cst)) {
+				alert('정확히 입력해주세요!')
+			} else if (cst <= 11.19) {
+				$('.의자점수표시').html('')
+				$('.의자점수표시').html('4점')
+			} else if (11.20 <= cst && cst <= 13.69) {
+				$('.의자점수표시').html('')
+				$('.의자점수표시').html('3점')
+			} else if (13.7 <= cst && cst <= 16.69) {
+				$('.의자점수표시').html('')
+				$('.의자점수표시').html('2점')
+			} else if (cst >= 16.7 && cst < 60) {
+				$('.의자점수표시').html('')
+				$('.의자점수표시').html('1점')
+			} else if (cst >= 60) {
+				$('.의자점수표시').html('')
+				$('.의자점수표시').html('0점')
+			}
+		});
+
+		// 균형결과버튼 누르면 점수가 나오는 코드
+		// 기본자세
+		$('.균형버튼').click(function() {
+			let bal1 = $('.균형기록1').val()
+			let bal2 = $('.균형기록2').val()
+			let bal3 = $('.균형기록3').val()
+
+			if (bal1 == '' || isNaN(bal1)) {
+				alert('정확히 입력해주세요!')
+			} else if (bal1 >= 10) {
+				$('.균형점수표시1').html('')
+				$('.균형점수표시1').html('1점')
+			} else {
+				$('.균형점수표시1').html('')
+				$('.균형점수표시1').html('0점')
+			}
+
+			// 반 일렬자세
+			if (bal2 == '' || isNaN(bal2)) {
+				alert('정확히 입력해주세요!')
+			} else if (bal2 >= 10) {
+				$('.균형점수표시2').html('')
+				$('.균형점수표시2').html('1점')
+			} else {
+				$('.균형점수표시2').html('')
+				$('.균형점수표시2').html('0점')
+			}
+
+			// 일렬자세
+			if (bal3 == '' || isNaN(bal3)) {
+				alert('정확히 입력해주세요!')
+			} else if (bal3 >= 10) {
+				$('.균형점수표시3').html('')
+				$('.균형점수표시3').html('2점')
+			} else if (bal3 >= 3 && bal3 < 10) {
+				$('.균형점수표시3').html('')
+				$('.균형점수표시3').html('1점')
+			} else {
+				$('.균형점수표시3').html('')
+				$('.균형점수표시3').html('0점')
+			}
+		})
+		
+
+		$('.총점수버튼').click(function(){
+			let 보행점수 = $('.보행점수표시').html().slice(0, -1)
+			let 의자점수 = $('.의자점수표시').html().slice(0, -1)
+			let 균형점수1 = $('.균형점수표시1').html().slice(0, -1)
+			let 균형점수2 = $('.균형점수표시2').html().slice(0, -1)
+			let 균형점수3 = $('.균형점수표시3').html().slice(0, -1)
+								 
+			
+			$('.점수공개').html(Number(보행점수) + Number(의자점수) + Number(균형점수1) + Number(균형점수2) + Number(균형점수3) + '점')
+			
+		});
+		
+		
+	</script>
+
+</body></html>
